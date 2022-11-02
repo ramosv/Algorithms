@@ -1,6 +1,8 @@
 public class QuickUnionImproved {
 
     //Quick Union with Weights and path compression
+    //Same as quick-union, but maintain extra array sz[i]
+    //to count number of objects in the tree rooted at i
 
     private int[] id;
     private int[] sz;
@@ -17,8 +19,14 @@ public class QuickUnionImproved {
     }
 
     // chase parent pointers until reach root (depth of i array accesses)
+    //add second loop to root() to set the id[]
+    //of each examined node to the root.
     private int root(int i) {
-        while (i != id[i]) i = id[i];
+        while (i != id[i]) {
+            // Make every other node in path point to its grandparent (thereby halving path length).
+            id[i] = id[id[i]];
+            i = id[i];
+        }
         return i;
     }
 
@@ -29,6 +37,9 @@ public class QuickUnionImproved {
 
 
     //Check root of p to point to root of q (depth of p and q array accesses)
+
+    //Link root of smaller tree to root of larger tree.
+    //Update the sz[] array
     public void union(int p, int q) {
         int i = root(p);
         int j = root(q);
