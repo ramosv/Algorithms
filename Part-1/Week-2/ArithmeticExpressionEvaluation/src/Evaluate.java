@@ -6,6 +6,9 @@ public class Evaluate {
 
         // Create two stacks: One for operations and one for values
 
+        // With input: (1+((2+3)*(4*5)))
+        // Answer should be: 101.0
+
         Stack<Double> vals = new Stack<Double>();
         Stack<String> ops = new Stack<String>();
         Scanner sc = new Scanner(System.in);
