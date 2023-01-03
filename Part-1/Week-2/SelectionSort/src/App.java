@@ -1,6 +1,9 @@
+import java.util.Arrays;
+
 public class App {
     public static void main(String[] args) throws Exception {
-        System.out.println("Hello, World!");
+        int[] arr = { 64, 846, 6854, 352, 35, 1, 83, 8, 1, 6, 8 };
+        sort(arr);
     }
 
     public static int indexOfSmallest(int arr[], int indexFrom) {
@@ -25,6 +28,7 @@ public class App {
     public static void sort(int arr[]) {
         for (int i = 0; i < arr.length; i++) {
             swap(arr, i, indexOfSmallest(arr, i));
+            System.out.println(Arrays.toString(arr));
         }
     }
 }
